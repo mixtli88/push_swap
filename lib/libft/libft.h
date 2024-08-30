@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:50:05 by mabril            #+#    #+#             */
-/*   Updated: 2024/07/08 19:51:33 by mabril           ###   ########.fr       */
+/*   Updated: 2024/08/28 10:21:39 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_strtolowel(char *str);
+
 
 #endif

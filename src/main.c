@@ -6,11 +6,12 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/08/27 18:37:14 by mabril           ###   ########.fr       */
+/*   Updated: 2024/08/30 17:53:27 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
 
 int	main(int ac, char **av)
 {
@@ -23,10 +24,6 @@ int	main(int ac, char **av)
 		return (1);
 	else
 		av = ft_split(av[1], ' ');
-	while(av[0][i])
-	{
-		if(list == NULL)
-			crear_lista;
-		++i;
-	}
+		init(&a, *av);
+	
 }
