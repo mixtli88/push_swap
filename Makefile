@@ -6,7 +6,7 @@
 #    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/27 12:37:13 by mabril            #+#    #+#              #
-#    Updated: 2024/08/30 18:31:47 by mabril           ###   ########.fr        #
+#    Updated: 2024/09/03 11:55:23 by mabril           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,28 +70,3 @@ re	 		: fclean all
 #--- PHONY ---#
 
 .PHONY	 	: all clean fclean re
-
-# NAME = push_swap
-
-# SRCS = main.c ft_split.c ft_calloc.c utils.c ft_putstr_fd.c ft_bzero.c ft_substr.c ft_strdup.c ft_strlen.c\
-
-# OBJS = $(SRCS:.c=.o)
-
-# CC = gcc
-# CFLAGS = -Wall -Wextra -Werror
-# RM = rm -f
-
-# all :	$(NAME)
-
-# $(NAME) : $(OBJS)
-# 	$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
-	
-# clean :
-# 	$(RM) $(OBJS)
-
-# fclean : clean 
-# 	$(RM) $(NAME)
-
-# re : fclean all
-
-

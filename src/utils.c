@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/08/30 17:53:22 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/03 17:41:12 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,7 @@ long	ft_atolong(char *str)
 	return (n * sig);
 }
 
-void	new_node(t_node **stack, int num)
-{
-	t_node	*node;
-	// t_node	*ult_node;
-
-	node = ft_calloc(1, sizeof(t_node));
-	// if (!stack)
-	// {
-	// 	// free()
-	// 	exit(EXIT_FAILURE);
-	// }
-	node->num = num;
-	node->sig = NULL;
-	if(*stack == NULL)
-	{
-		*stack = node;
-		node->prev = NULL;
-	}
-}
-
-void	init(t_node **a, char *av)
+void	init(t_node **head, char *av)
 {
 	long nbr;
 	int i;
@@ -78,7 +58,46 @@ void	init(t_node **a, char *av)
 			// free()
 			exit(EXIT_FAILURE);
 		}
-		new_node(a,(int)nbr);
+		new_node(head,(int)nbr);
 		i++;		
+	}
+}
+
+void	new_node(t_node **head, int num)
+{
+	t_node	*node;
+	// t_node	*ult_node;
+
+	node = ft_calloc(1, sizeof(t_node));
+	if (!head)
+	{
+		// free()
+		exit(EXIT_FAILURE);
+	}
+	node->num = num;
+	node->sig = NULL;
+	if(*head == NULL)
+	{
+		*head = node;
+		node->prev = NULL;
+	}
+}
+void print_list(t_node *head)
+{
+	while (head)
+	{
+		printf("%d ", head->num);
+		head = head->sig;
+	}
+	printf("\n");
+}
+
+void free_list(t_node *head)
+{
+	while (head)
+	{
+		t_node *next = head->sig;
+		free(head);
+		head = next;
 	}
 }
