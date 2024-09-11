@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/10 22:30:17 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:22:48 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ long	ft_atolong(char *str)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
 			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
 		i++;
-	while (str[i] == '+' || str[i] == '-')
-	{
+	if (str[i] == '+' || str[i] == '-')
+	{ 
 		if (str[i] == '-')
 			sig = -1;
 		i++;
@@ -41,10 +41,16 @@ long	ft_atolong(char *str)
 		n = n * 10 + (str[i] - 48);
 		i++;
 	}
+	  while (str[i])
+    {
+        if (str[i] != ' ')
+            break;
+        i++;
+    }
 	return (n * sig);
 }
 
-void	init(t_node **head, char **av)
+void	init( t_node **head, char **av)
 {
 	long nbr;
 	int i;
@@ -53,12 +59,19 @@ void	init(t_node **head, char **av)
 	while (av[i])
 	{
 		nbr = ft_atolong(av[i]);
+		printf("%ld\n", nbr);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			exit(EXIT_FAILURE);
-
-		new_node(head,(int)nbr);
+		new_node(head,nbr);
 		i++;	
 	}
+	
+	// free(av[0]);
+	// free(av[1]);
+	// free(av[2]);
+	// free(av[3]);
+	// free(av);
+	
 }
 
 void	new_node(t_node **head, int num)
@@ -91,7 +104,17 @@ void print_list(t_node *head)
 	current = head;
 	while (1)
 	{		
-		printf("***<- %d| %d - %d |%d -> *** ", current->prev->num,current->num,current->indx, current->next->num);
+		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->num, current->next->num);
+		current = current->next;
+		count++;
+		if (current == head)
+			break;
+	}
+	current = head;
+		printf("\n");
+	while (1)
+	{		
+		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->indx, current->next->num);
 		current = current->next;
 		count++;
 		if (current == head)
@@ -101,13 +124,14 @@ void print_list(t_node *head)
 
 void free_list(t_node *head)
 {
-	t_node *next = head->next;
-	
+	t_node *current = head->prev;
+	head->prev = NULL;
+	current->next = NULL;
 	while (head)
 	{
-		next = head->next;
+		current = head->next;
 		free(head);
-		head = next;
+		head = current;
 	}
 }
 
