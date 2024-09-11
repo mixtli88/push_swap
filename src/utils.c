@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/05 12:18:03 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/10 22:30:17 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,50 +64,93 @@ void	init(t_node **head, char **av)
 void	new_node(t_node **head, int num)
 {
 	t_node	*node;
-	t_node	*tem;
-
+	t_node	*last;
 	node = ft_calloc(1, sizeof(t_node));
-	tem = ft_calloc(1, sizeof(t_node));
-	tem = *head;
 	
 	node->num = num;
-	node->next = NULL;
+	node->next = *head;
+	
 	
 	if(*head == NULL)
 	{
 		*head = node;
+		node->prev = *head;
 	}
 	else
 	{
-		while(tem->next)
-		{
-			tem = tem->next;
-		// printf("num tem-next= %d\n ", tem->num);
-		}
-		
-		tem->next = node;
+		last = (*head)->prev;
+		last->next = node;
+		node->prev = last;
+		(*head)->prev = node;
 	}
-		// printf("num = %d\n ", node->num);
-	// free(tem);
 }
 void print_list(t_node *head)
 {
 	int count = 1;
-	while (head)
-	{
-		printf("\nTotal nodos: %d\n", count);
-		printf("%d ", head->num);
-		head = head->next;
+	t_node *current;
+	current = head;
+	while (1)
+	{		
+		printf("***<- %d| %d - %d |%d -> *** ", current->prev->num,current->num,current->indx, current->next->num);
+		current = current->next;
 		count++;
+		if (current == head)
+			break;
 	}
 }
 
 void free_list(t_node *head)
 {
+	t_node *next = head->next;
+	
 	while (head)
 	{
-		t_node *next = head->next;
+		next = head->next;
 		free(head);
 		head = next;
 	}
+}
+
+void tidex(t_node **head, int nd)
+{
+	int i;
+	t_node *current;
+	t_node *tem;
+	
+	i = 1;
+	current = *head;
+	while(0 < nd)
+	{
+		current = *head;
+		while (current->indx)
+			current = current->next;
+		tem = current->next;
+		while(tem != *head)
+		{
+			while (tem->indx)
+				tem = tem->next;
+			if(tem->num < current->num )
+				current = tem;
+			tem = tem->next;
+		}		
+		current->indx = i++;
+		nd--;
+	}
+
+}
+
+int ft_listlen(t_node *head)
+{
+	int lst_len = 0;
+	t_node *current; 
+	
+	current = head;
+	while (current)
+	{
+		current = current->next;
+		lst_len++;
+		if (current == head)
+			break;
+	}
+	return (lst_len);
 }
