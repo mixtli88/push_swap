@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/11 12:19:53 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/12 09:23:00 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	print_list(t_node *head);
 void	free_list(t_node *head);
 void 	tidex(t_node **head, int nd);
 int 	ft_listlen(t_node *head);
+void 	free_av(char **av);
 // if deja trier exit
 
 #endif

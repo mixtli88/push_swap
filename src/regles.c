@@ -1,13 +1,13 @@
 #include "../inc/push_swap.h"
 
 // sa (swap a): Intercambia los primeros 2 elementos en la parte superior de la pila a. No hace nada si solo hay uno o ninguno.
-
+void sa(t_node **a)
 
 // sb (swap b): Intercambia los primeros 2 elementos en la parte superior de la pila b. No hace nada si solo hay uno o ninguno.
-
+void sb(t_node **a)
 
 // ss: sa y sb al mismo tiempo.
-
+void ss(t_note **f)
 
 // pa (push a): Tome el primer elemento encima de b y colóquelo en a. No hace nada si b está vacío.
 

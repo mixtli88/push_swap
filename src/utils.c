@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/11 20:45:55 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/12 09:32:00 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,35 +54,30 @@ void	init( t_node **head, char **av)
 	while (av[i])
 	{
 		nbr = ft_atolong(av[i]);
-		printf("%ld\n", nbr);
+		// printf("%ld\n", nbr);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			exit(EXIT_FAILURE);
 		new_node(head,nbr);
 		i++;	
 	}
-	
-	// free(av[0]);
-	// free(av[1]);
-	// free(av[2]);
-	// free(av[3]);
-	// free(av);
-	
+	free_av(av);
 }
 
 void	new_node(t_node **head, int num)
 {
 	t_node	*node;
 	t_node	*last;
-	node = ft_calloc(1, sizeof(t_node));
 	
+	node = ft_calloc(1, sizeof(t_node));
+	if (!node)
+		return;
 	node->num = num;
 	node->indx = 0;
-	node->next = *head;
-	
-	
+	//si head  no existe head apunta a nodo
 	if(*head == NULL)
 	{
 		*head = node;
+		node->next = *head;
 		node->prev = *head;
 	}
 	else
@@ -90,32 +85,33 @@ void	new_node(t_node **head, int num)
 		last = (*head)->prev;
 		last->next = node;
 		node->prev = last;
+		node->next = *head;
 		(*head)->prev = node;
 	}
 }
 void print_list(t_node *head)
 {
-	int count = 1;
 	t_node *current;
+
 	current = head;
-	while (1)
+	while (head)
 	{		
-		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->num, current->next->num);
+		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->num, 
+		current->next->num);
 		current = current->next;
-		count++;
 		if (current == head)
 			break;
 	}
 	current = head;
 		printf("\n");
-	while (1)
+	while (head)
 	{		
 		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->indx, current->next->num);
 		current = current->next;
-		count++;
 		if (current == head)
 			break;
 	}
+	printf("\n");
 }
 
 void free_list(t_node *head)
@@ -138,29 +134,21 @@ void tidex(t_node **head, int nd)
 	t_node *tem;
 	
 	i = 1;
-	current = *head;
 	while(0 < nd)
-	{
-			
+	{	
 		current = *head;
 		while (current->indx != 0 )
-		{
 			current = current->next;
-		}
 		tem = current->next;
-		while(tem != *head)
+		while(tem && tem != *head)
 		{
-			while (tem->indx != 0 && tem->next != *head)
-				tem = tem->next;
-			if(tem->num < current->num && tem->indx == 0)
+			if(tem->indx == 0 && tem->num < current->num)
 				current = tem;
-			else
-				tem = tem->next;
-		}		
+			tem = tem->next;
+		}
 		current->indx = i++;
 		nd--;
 	}
-
 }
 
 int ft_listlen(t_node *head)
@@ -177,4 +165,14 @@ int ft_listlen(t_node *head)
 			break;
 	}
 	return (lst_len);
+}
+
+void free_av(char **av)
+{
+	int i;
+	
+	i=0;
+	while(av[i])
+		free(av[i++]);
+	free(av);
 }
