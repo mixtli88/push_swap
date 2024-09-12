@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/11 12:22:48 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/11 20:45:55 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ long	ft_atolong(char *str)
 		n = n * 10 + (str[i] - 48);
 		i++;
 	}
-	  while (str[i])
-    {
-        if (str[i] != ' ')
-            break;
-        i++;
-    }
 	return (n * sig);
 }
 
@@ -56,6 +50,7 @@ void	init( t_node **head, char **av)
 	int i;
 
 	i = 0;
+	nbr =0;
 	while (av[i])
 	{
 		nbr = ft_atolong(av[i]);
@@ -81,6 +76,7 @@ void	new_node(t_node **head, int num)
 	node = ft_calloc(1, sizeof(t_node));
 	
 	node->num = num;
+	node->indx = 0;
 	node->next = *head;
 	
 	
@@ -90,7 +86,7 @@ void	new_node(t_node **head, int num)
 		node->prev = *head;
 	}
 	else
-	{
+	{ 
 		last = (*head)->prev;
 		last->next = node;
 		node->prev = last;
@@ -145,17 +141,21 @@ void tidex(t_node **head, int nd)
 	current = *head;
 	while(0 < nd)
 	{
+			
 		current = *head;
-		while (current->indx)
+		while (current->indx != 0 )
+		{
 			current = current->next;
+		}
 		tem = current->next;
 		while(tem != *head)
 		{
-			while (tem->indx)
+			while (tem->indx != 0 && tem->next != *head)
 				tem = tem->next;
-			if(tem->num < current->num )
+			if(tem->num < current->num && tem->indx == 0)
 				current = tem;
-			tem = tem->next;
+			else
+				tem = tem->next;
 		}		
 		current->indx = i++;
 		nd--;
