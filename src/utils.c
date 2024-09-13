@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/12 09:32:00 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:27:14 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	init( t_node **head, char **av)
 	nbr =0;
 	while (av[i])
 	{
+		if(error_syntax(av[i] == 1))
+			exit(EXIT_FAILURE);
 		nbr = ft_atolong(av[i]);
-		// printf("%ld\n", nbr);
+		
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			exit(EXIT_FAILURE);
 		new_node(head,nbr);
