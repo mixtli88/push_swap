@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/13 12:27:14 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/13 18:56:49 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,26 @@ long	ft_atolong(char *str)
 	return (n * sig);
 }
 
-void	init( t_node **head, char **av)
+void	init( t_node **head, char **av, bool flag_split)
 {
 	long nbr;
 	int i;
 
 	i = 0;
-	nbr =0;
+	nbr = 0;
 	while (av[i])
 	{
-		if(error_syntax(av[i] == 1))
-			exit(EXIT_FAILURE);
+		if(error_syntax(av[i]) == 1)
+			error_free(head, av, flag_split);
 		nbr = ft_atolong(av[i]);
 		
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			exit(EXIT_FAILURE);
+			error_free(head, av, flag_split);
 		new_node(head,nbr);
 		i++;	
 	}
-	free_av(av);
+	if(flag_split)
+		free_av(av);
 }
 
 void	new_node(t_node **head, int num)
@@ -98,7 +99,7 @@ void print_list(t_node *head)
 	current = head;
 	while (head)
 	{		
-		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->num, 
+		printf("   | %d|   %d   |%d    ", current->prev->num,current->num, 
 		current->next->num);
 		current = current->next;
 		if (current == head)
@@ -108,7 +109,7 @@ void print_list(t_node *head)
 		printf("\n");
 	while (head)
 	{		
-		printf("***<- %d|    %d   |%d -> *** ", current->prev->num,current->indx, current->next->num);
+		printf("           %d          ",current->indx) ;
 		current = current->next;
 		if (current == head)
 			break;
@@ -177,4 +178,8 @@ void free_av(char **av)
 	while(av[i])
 		free(av[i++]);
 	free(av);
+}
+bool check_ord(t_node *head)
+{
+	if
 }
