@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/13 18:56:49 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/15 09:28:10 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,5 +181,13 @@ void free_av(char **av)
 }
 bool check_ord(t_node *head)
 {
-	if
+	if(!head)
+		return (1);
+	while(head->next)
+	{
+		if(head->indx > head->next->indx)
+			return (false);
+		head = head->next;
+	}
+	return(true);
 }

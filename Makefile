@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
+#    By: mike <mike@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/27 12:37:13 by mabril            #+#    #+#              #
-#    Updated: 2024/09/13 15:59:47 by mabril           ###   ########.fr        #
+#    Updated: 2024/09/15 08:53:51 by mike             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ BINDIR	=	bin
 
 #--- SOURCES ---#
 
-SRCS	=	main.c utils.c error.c
+SRCS	=	main.c utils.c error.c regles.c
 SRC		=	$(addprefix $(SRCDIR)/, $(SRCS))
 BIN     =	$(patsubst $(SRCDIR)/%.c,$(BINDIR)/%.o,$(SRC))
 

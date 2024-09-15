@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/13 18:57:53 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/15 09:43:04 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int	main(int ac, char **av)
 {
 	t_node	*a;
-	t_node	*b;
+	// t_node	*b;
 	
 	a = NULL;
-	b = NULL;
+	// b = NULL;
 	if (ac == 1 || (2 == ac && !av[1][0]))
 		return (1);
 	else if(2 == ac)
@@ -29,12 +29,20 @@ int	main(int ac, char **av)
 	}	
 	else
 		init(&a, av + 1, ac == 2);
+	tidex(&a, ft_listlen(a));
 	if(!check_ord(a))
 	{
-		if (ft_listlen == 2)
-			sa(&a,)
+		if (ft_listlen(a) == 2)
+		{
+			
+			printf("s");
+			// sa(&a);
+			min(&a);
+		}
+		if(ft_listlen(a) == 3)
+			tresnudos(&a);
+			
 	}
-	tidex(&a, ft_listlen(a));
 	print_list(a);
 	free_list(a);
 	
