@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/17 12:31:14 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/17 18:31:06 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ void print_list(t_node *head)
 	current = head;
 	while (head)
 	{		
-		printf("   | %d|   %d   |%d    ", current->prev->num,current->num, 
-		current->next->num);
+		printf("   |  %d   |   ", current->num);
 		current = current->next;
 		if (current == head)
 			break;
@@ -109,7 +108,7 @@ void print_list(t_node *head)
 		printf("\n");
 	while (head)
 	{		
-		printf("           %d          ",current->indx) ;
+		printf("      %d       ",current->indx) ;
 		current = current->next;
 		if (current == head)
 			break;
@@ -188,13 +187,8 @@ bool check_ord(t_node *head)
 		return (1);
 	while(current->next && current->next != head)
 	{
-		printf("%d\n", current->indx);
-		printf("%d\n", current->next->indx);
 		if(current->indx > current->next->indx)
-		{
-			printf("t");
 			return (false);
-		}	
 		current = current->next;
 	}
 	return(true);

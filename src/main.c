@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/17 11:53:05 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/17 19:33:49 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,11 @@ int	main(int ac, char **av)
 	{
 			printf("s");
 		if (ft_listlen(a) == 2)
-		{
-			
-			// sa(&a);
 			min(&a);
-		}
 		if(ft_listlen(a) == 3)
 			tresnudos(&a);
-			
 	}
-	print_list(a);
+	// print_list(a);
 	free_list(a);
 	
 	return 0;

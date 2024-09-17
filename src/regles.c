@@ -8,7 +8,6 @@ void sa(t_node **head)
 
     current = (*head)->next;
     last = (*head)->prev;
-   
     last->next = current;
     current->prev = last;
     last = current->next;
@@ -16,47 +15,74 @@ void sa(t_node **head)
     (*head)->next = last;
     (*head)->prev = current;
     last->prev = *head;
+	*head = current;
 }
 void min(t_node **head)
 {
     t_node *last;
-    t_node *dos;
 
     if (!head || !(*head) || !(*head)->next)
 	   	return;
-	last = *head;
-    dos =	last->next;
-    *head = dos;
+	last = (*head)->next;
+    *head = last;
 }
-void rra(t_node **head)
-{
-    t_node *last;
-    // t_node *dos;
 
-    if (!head || !(*head) || !(*head)->next)
-	   	return;
-    last = (*head)->prev;
-	*head = last;
-    // dos =	last->next;
-    // *head = dos;
-}
-void tresnudos(t_node **head)
+void 	tresnudos(t_node **head)
 {
     t_node 	*last;
-    t_node *dos;
+    t_node *two;
+		int i = 0;
 
     if (!head || !(*head) || !(*head)->next)
 		return;
-	last = (*head)->prev;
-    dos = (*head)->next;
+	while(!check_ord(*head))
+	{
+		last = (*head)->prev;
+		two = (*head)->next;
+		if((*head)->indx > last->indx)
+		{	
+			if((*head)->indx > two->indx)
+			{	
+				printf("ra\n");
+				ra(head);
+			}
+			else if (last->indx < (*head)->indx)
+			{
 
-    if((*head)->indx < dos->indx && dos->indx > last->indx)
-			*head = last;
-    if((*head)->indx < dos->indx && dos->indx < last->indx)
+				printf("rra\n");
+				rra(head);
+			}
+		}
+		else
+		{
+			printf("sa\n");
 			sa(head);
-    // if	last->indx > dos->indx &&	last->indx > dos->next->indx )
-    // 	if(dos->indx < dos->next->indx)
-	// 		min(head);
+		}
+		print_list(*head);
+		// if((*head)->indx < two->indx && two->indx > last->indx)
+		// {
+		// 	if(last->indx < (*head)->indx)
+		// 		rra(head);
+		// 	else
+		// 	{
+		// 		rra(head);
+		// 		sa(head);
+		// 	}
+		// }
+		// if((*head)->indx > two->indx && two->indx > last->indx)
+		// {
+		// 	if(last->indx < (*head)->indx)
+		// 		rra(head);
+		// 	else
+		// 	{
+		// 		rra(head);
+		// 		sa(head);
+		// 	}
+		// }
+		i++;
+		if(i == 3)
+			break;
+	}
 }
 
 // sb (swap b): Intercambia los primeros 2 elementos en la parte superior de la pila b. No hace nada si solo hay	last o nin	last.
@@ -71,19 +97,36 @@ void tresnudos(t_node **head)
 // pb (push b): Toma el primer elemento encima de a y colócalo en b. No hace nada si a está vacío.
 
 
-// ra (rotate a): Desplaza todos los elementos de la pila hacia arriba una posición. El primer elemento se convierte en el último.
+// ra (rotate a): Desplaza totwo los elementos de la pila hacia arriba una posición. El primer elemento se convierte en el último.
 
+void ra(t_node **head)
+{
+    // t_node *curt;
 
-// rb (rotate b): Desplaza todos los elementos de la pila b una posición hacia arriba. El primer elemento se convierte en el último.
+    if (!head || !(*head) || !(*head)->next)
+	   	return;
+    *head= (*head)->next;
+	
+}
+
+// rb (rotate b): Desplaza totwo los elementos de la pila b una posición hacia arriba. El primer elemento se convierte en el último.
 
 
 // rr : ra y rb al mismo tiempo.
 
 
-// rra(giro inverso a): desplaza todos los elementos de la pila hacia abajo una posición. la pila a. El último elemento se convierte en el primero.
+// rra(giro inverso a): desplaza los elementos de la pila hacia abajo una posición. la pila a. El último elemento se convierte en el primero.
 
+void rra(t_node **head)
+{
+    t_node *last;
 
-// rrb(rotación inversa b): desplaza todos los elementos de la pila b una posición hacia abajo. la pila b. El último elemento se convierte en el primero.
+    if (!head || !(*head) || !(*head)->next)
+	   	return;
+    last = (*head)->prev;
+	*head = last;
+}
+// rrb(rotación inversa b): desplaza totwo los elementos de la pila b una posición hacia abajo. la pila b. El último elemento se convierte en el primero.
 
 
 // rrr: rra y rrb al mismo tiempo.
