@@ -31,7 +31,6 @@ void 	tresnudos(t_node **head)
 {
     t_node 	*last;
     t_node *two;
-		int i = 0;
 
     if (!head || !(*head) || !(*head)->next)
 		return;
@@ -59,29 +58,7 @@ void 	tresnudos(t_node **head)
 			sa(head);
 		}
 		print_list(*head);
-		// if((*head)->indx < two->indx && two->indx > last->indx)
-		// {
-		// 	if(last->indx < (*head)->indx)
-		// 		rra(head);
-		// 	else
-		// 	{
-		// 		rra(head);
-		// 		sa(head);
-		// 	}
-		// }
-		// if((*head)->indx > two->indx && two->indx > last->indx)
-		// {
-		// 	if(last->indx < (*head)->indx)
-		// 		rra(head);
-		// 	else
-		// 	{
-		// 		rra(head);
-		// 		sa(head);
-		// 	}
-		// }
-		i++;
-		if(i == 3)
-			break;
+		
 	}
 }
 
