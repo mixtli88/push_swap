@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/15 09:28:10 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/17 12:31:14 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,13 +181,21 @@ void free_av(char **av)
 }
 bool check_ord(t_node *head)
 {
+	t_node *current;
+
+	current = head;
 	if(!head)
 		return (1);
-	while(head->next)
+	while(current->next && current->next != head)
 	{
-		if(head->indx > head->next->indx)
+		printf("%d\n", current->indx);
+		printf("%d\n", current->next->indx);
+		if(current->indx > current->next->indx)
+		{
+			printf("t");
 			return (false);
-		head = head->next;
+		}	
+		current = current->next;
 	}
 	return(true);
 }

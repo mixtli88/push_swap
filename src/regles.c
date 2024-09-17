@@ -1,6 +1,6 @@
 #include "../inc/push_swap.h"
 
-// sa (swap a): Intercambia los primeros 2 elementos en la parte superior de la pila a. No hace nada si solo hay uno o ninguno.
+// sa (swap a): Intercambia los primeros 2 elementos en la parte superior de la pila a. No hace nada si solo hay	last o nin	last.
 void sa(t_node **head)
 {
     t_node *current;
@@ -19,47 +19,47 @@ void sa(t_node **head)
 }
 void min(t_node **head)
 {
-    t_node *uno;
+    t_node *last;
     t_node *dos;
 
-    if (!head || !(*head) || !(*head)->next) 
-        return;
-    uno = *head;
-    dos = uno->next;
+    if (!head || !(*head) || !(*head)->next)
+	   	return;
+	last = *head;
+    dos =	last->next;
     *head = dos;
 }
 void rra(t_node **head)
 {
     t_node *last;
-    t_node *dos;
+    // t_node *dos;
 
-    if (!head || !(*head) || !(*head)->next) 
-        return;
+    if (!head || !(*head) || !(*head)->next)
+	   	return;
     last = (*head)->prev;
 	*head = last;
-    // dos = uno->next;
+    // dos =	last->next;
     // *head = dos;
 }
 void tresnudos(t_node **head)
 {
-    t_node *uno;
+    t_node 	*last;
     t_node *dos;
-	t_node *tres;
 
-    if (!head || !(*head) || !(*head)->next) 
-        return;
-    uno = *head;
+    if (!head || !(*head) || !(*head)->next)
+		return;
+	last = (*head)->prev;
     dos = (*head)->next;
 
-    if(uno->indx < dos->indx)
-		if(dos->indx > dos->next->indx)
-			rra(head);
-    if(uno->indx > dos->indx && uno->indx > dos->next->indx )
-    	if(dos->indx < dos->next->indx)
-			min(head);
+    if((*head)->indx < dos->indx && dos->indx > last->indx)
+			*head = last;
+    if((*head)->indx < dos->indx && dos->indx < last->indx)
+			sa(head);
+    // if	last->indx > dos->indx &&	last->indx > dos->next->indx )
+    // 	if(dos->indx < dos->next->indx)
+	// 		min(head);
 }
 
-// sb (swap b): Intercambia los primeros 2 elementos en la parte superior de la pila b. No hace nada si solo hay uno o ninguno.
+// sb (swap b): Intercambia los primeros 2 elementos en la parte superior de la pila b. No hace nada si solo hay	last o nin	last.
 // // void sb(t_node **a)
 
 // ss: sa y sb al mismo tiempo.

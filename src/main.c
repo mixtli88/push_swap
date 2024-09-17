@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/15 09:43:04 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/17 11:53:05 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	main(int ac, char **av)
 	tidex(&a, ft_listlen(a));
 	if(!check_ord(a))
 	{
+			printf("s");
 		if (ft_listlen(a) == 2)
 		{
 			
-			printf("s");
 			// sa(&a);
 			min(&a);
 		}
