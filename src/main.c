@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/17 19:33:49 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/18 10:55:46 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,17 @@ int	main(int ac, char **av)
 	tidex(&a, ft_listlen(a));
 	if(!check_ord(a))
 	{
-			printf("s");
 		if (ft_listlen(a) == 2)
 			min(&a);
-		if(ft_listlen(a) == 3)
+		else if(ft_listlen(a) == 3)
 			tresnudos(&a);
+		else 
+			push_swap(&a);
+			
 	}
-	// print_list(a);
+	else
+		printf("ya esta ordenadaé\n");
+	print_list(a);
 	free_list(a);
 	
 	return 0;

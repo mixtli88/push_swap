@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/17 18:47:27 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/18 10:46:14 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void 	min(t_node **head);
 void 	tresnudos(t_node **head);
 void 	rra(t_node **head);
 void ra(t_node **head);
+bool reppet(t_node *head, long nbr);
 
 // if deja trier exit
 

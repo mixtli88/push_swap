@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/17 18:31:06 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/18 11:26:35 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,28 @@ void	init( t_node **head, char **av, bool flag_split)
 		
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error_free(head, av, flag_split);
-		new_node(head,nbr);
+		if(!reppet(*head, nbr))
+			new_node(head,nbr);
 		i++;	
 	}
 	if(flag_split)
 		free_av(av);
+}
+
+bool reppet(t_node *head, long nbr)
+{
+	t_node *current;
+
+	current = head;
+	while(current != NULL)
+	{
+		if(current->num == nbr)
+			return (true);
+		current = current->next;
+		if(current ==  head)
+			break;
+	}
+	return (false);
 }
 
 void	new_node(t_node **head, int num)
@@ -76,7 +93,7 @@ void	new_node(t_node **head, int num)
 		return;
 	node->num = num;
 	node->indx = 0;
-	//si head  no existe head apunta a nodo
+
 	if(*head == NULL)
 	{
 		*head = node;
@@ -192,4 +209,48 @@ bool check_ord(t_node *head)
 		current = current->next;
 	}
 	return(true);
+}
+void push_swap(t_node **head, t_node **b)
+{
+	t_node *current;
+	int i;
+	
+	i = 0; 
+	
+	while(!check_ord(*head))
+	{
+		
+			if(ft_listlen(*head) == 5)
+			{
+				while(!check_ord(*head))
+				{
+					last = (*head)->prev;
+					two = (*head)->next;
+					if((*head)->indx > last->indx)
+					{	
+						if((*head)->indx > two->indx)
+						{	
+							printf("ra\n");
+							ra(head);
+						}
+						else if (last->indx < (*head)->indx)
+						{
+
+							printf("rra\n");
+							rra(head);
+						}
+					}
+				}
+				while(i < 2)
+				{
+					if
+				}
+				
+				if(ft_listlen(*head) == 3)
+					tresnudos(head);
+				if(ft_listlen(*b) == 2)
+					two_b(b);
+			}
+				
+	}
 }
