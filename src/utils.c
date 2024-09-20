@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/20 09:15:31 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/20 12:47:51 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ void push_swap(t_node **head, t_node **b)
 
 	// i = 0; 
 	// nn = ft_listlen(*head);
-	while(!check_ord(*head) && b != NULL)
+	while(!check_ord(*head) || *b != NULL)
 	{
 	
 		while(!check_ord(*head))
@@ -233,7 +233,6 @@ void push_swap(t_node **head, t_node **b)
 			if(ft_listlen(*head) == 3)
 				tresnudos(head);
 		}
-		two_n_b(b);
 		if(*b != NULL)
 			pa(head, b);
 	}

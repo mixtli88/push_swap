@@ -6,6 +6,7 @@ void sa(t_node **head)
     t_node *current;
     t_node *last;
 
+	printf("\nsa\n");
     current = (*head)->next;
     last = (*head)->prev;
     last->next = current;
@@ -16,7 +17,6 @@ void sa(t_node **head)
     (*head)->prev = current;
     last->prev = *head;
 	*head = current;
-	printf("sa\n");
 }
 void min(t_node **head)
 {
@@ -72,17 +72,8 @@ void pa(t_node **head,t_node **b)
 	t_node *node;
 	t_node *last;
 
+	ft_putstr_fd("pa\n", 1);
 	node = *b;
-	if((*b)->indx == (*b)->next->indx )
-		*b = NULL;
-	else
-	{
-		last = (*b) ->prev;
-		*b = (*b)->next;
-		last->next = *b;
-		(*b)->prev = last;
-
-	}
 	if(*head == NULL)
 	{
 		*head = node;
@@ -98,6 +89,15 @@ void pa(t_node **head,t_node **b)
 		(*head)->prev = node;
 		*head =  node;
 	}
+	if((*b)->indx == (*b)->next->indx )
+		*b = NULL;
+	else
+	{
+		last = (*b) ->prev;
+		*b = (*b)->next;
+		last->next = *b;
+		(*b)->prev = last;
+	}
 }
 
 // pb (push b): Toma el primer elemento encima de a y colócalo en b. No hace nada si a está vacío.
@@ -107,13 +107,13 @@ void pb(t_node **head,t_node **b)
 	t_node *node;
 	t_node *last;
 
+	ft_putstr_fd("pb\n", 1);
 	node = *head;
 	last = (*head) ->prev;
 	*head = (*head)->next;
 	last->next = *head;
 	(*head) ->prev = last;
-	if(ft_listlen (*head)==1)
-		*head =	NULL;
+	
 	if(*b == NULL)
 	{
 		*b = node;
@@ -127,16 +127,15 @@ void pb(t_node **head,t_node **b)
 		node->prev = last;
 		node->next = *b;
 		(*b)->prev = node;
-		
+		*b = node;
 	}
-	printf("pb\n");
 }
 // ra (rotate a): Desplaza totwo los elementos de la pila hacia arriba una posición. El primer elemento se convierte en el último.
 
 void ra(t_node **head)
 {
     // t_node *curt;
-
+	ft_putstr_fd("ra\n", 1);
     if (!head || !(*head) || !(*head)->next)
 	   	return;
     *head= (*head)->next;
@@ -155,11 +154,12 @@ void rra(t_node **head)
 {
     t_node *last;
 
+	// printf("\nrra\n");
+	ft_putstr_fd("rra\n", 1);
     if (!head || !(*head) || !(*head)->next)
 	   	return;
     last = (*head)->prev;
 	*head = last;
-	printf("rra\n");
 }
 // rrb(rotación inversa b): desplaza totwo los elementos de la pila b una posición hacia abajo. la pila b. El último elemento se convierte en el primero.
 
