@@ -16,6 +16,7 @@ void sa(t_node **head)
     (*head)->prev = current;
     last->prev = *head;
 	*head = current;
+	printf("sa\n");
 }
 void min(t_node **head)
 {
@@ -42,22 +43,18 @@ void 	tresnudos(t_node **head)
 		{	
 			if((*head)->indx > two->indx)
 			{	
-				printf("ra\n");
 				ra(head);
 			}
 			else if (last->indx < (*head)->indx)
 			{
 
-				printf("rra\n");
 				rra(head);
 			}
 		}
 		else
 		{
-			printf("sa\n");
 			sa(head);
 		}
-		print_list(*head);
 		
 	}
 }
@@ -70,10 +67,70 @@ void 	tresnudos(t_node **head)
 
 // pa (push a): Tome el primer elemento encima de b y colóquelo en a. No hace nada si b está vacío.
 
+void pa(t_node **head,t_node **b)
+{
+	t_node *node;
+	t_node *last;
+
+	node = *b;
+	if((*b)->indx == (*b)->next->indx )
+		*b = NULL;
+	else
+	{
+		last = (*b) ->prev;
+		*b = (*b)->next;
+		last->next = *b;
+		(*b)->prev = last;
+
+	}
+	if(*head == NULL)
+	{
+		*head = node;
+		node->next = *head;
+		node->prev = *head;
+	}
+	else
+	{
+		last = (*head) ->prev;
+		last->next = node;
+		node->next = *head;
+		node->prev = last;
+		(*head)->prev = node;
+		*head =  node;
+	}
+}
 
 // pb (push b): Toma el primer elemento encima de a y colócalo en b. No hace nada si a está vacío.
 
+void pb(t_node **head,t_node **b)
+{
+	t_node *node;
+	t_node *last;
 
+	node = *head;
+	last = (*head) ->prev;
+	*head = (*head)->next;
+	last->next = *head;
+	(*head) ->prev = last;
+	if(ft_listlen (*head)==1)
+		*head =	NULL;
+	if(*b == NULL)
+	{
+		*b = node;
+		node->next = *b;
+		node->prev = *b;
+	}
+	else
+	{ 
+		last = (*b)->prev;
+		last->next = node;
+		node->prev = last;
+		node->next = *b;
+		(*b)->prev = node;
+		
+	}
+	printf("pb\n");
+}
 // ra (rotate a): Desplaza totwo los elementos de la pila hacia arriba una posición. El primer elemento se convierte en el último.
 
 void ra(t_node **head)
@@ -102,6 +159,7 @@ void rra(t_node **head)
 	   	return;
     last = (*head)->prev;
 	*head = last;
+	printf("rra\n");
 }
 // rrb(rotación inversa b): desplaza totwo los elementos de la pila b una posición hacia abajo. la pila b. El último elemento se convierte en el primero.
 

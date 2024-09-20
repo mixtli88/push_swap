@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/18 10:46:14 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/19 11:52:38 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void 	tresnudos(t_node **head);
 void 	rra(t_node **head);
 void ra(t_node **head);
 bool reppet(t_node *head, long nbr);
+void pb(t_node **head,t_node **b);
+void pa(t_node **head,t_node **b);
+void two_n_b(t_node **b);
+void push_swap(t_node **head, t_node **b);
+int minimoa(t_node *head);
+
 
 // if deja trier exit
 

@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/18 11:26:35 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/20 09:15:31 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,45 +212,58 @@ bool check_ord(t_node *head)
 }
 void push_swap(t_node **head, t_node **b)
 {
-	t_node *current;
-	int i;
-	
-	i = 0; 
-	
-	while(!check_ord(*head))
-	{
-		
-			if(ft_listlen(*head) == 5)
-			{
-				while(!check_ord(*head))
-				{
-					last = (*head)->prev;
-					two = (*head)->next;
-					if((*head)->indx > last->indx)
-					{	
-						if((*head)->indx > two->indx)
-						{	
-							printf("ra\n");
-							ra(head);
-						}
-						else if (last->indx < (*head)->indx)
-						{
+	// t_node *current;
+	// int i;
+	// int nn;
 
-							printf("rra\n");
-							rra(head);
-						}
-					}
-				}
-				while(i < 2)
-				{
-					if
-				}
-				
-				if(ft_listlen(*head) == 3)
-					tresnudos(head);
-				if(ft_listlen(*b) == 2)
-					two_b(b);
-			}
-				
+	// i = 0; 
+	// nn = ft_listlen(*head);
+	while(!check_ord(*head) && b != NULL)
+	{
+	
+		while(!check_ord(*head))
+		{
+			if(minimoa(*head) == 1)
+				pb(head, b);
+			
+			else if(minimoa(*head) == 2)
+				sa(head);
+			else if(minimoa(*head) == 3)
+				rra(head);
+			if(ft_listlen(*head) == 3)
+				tresnudos(head);
+		}
+		two_n_b(b);
+		if(*b != NULL)
+			pa(head, b);
 	}
+}
+
+		
+
+
+int minimoa(t_node *head)
+{
+	t_node *current;
+	// t_node *comp;
+	
+	current = head;
+	// comp = head->next;
+	if(current->indx < current->next->indx && current->indx < current->prev->indx)
+		return(1);
+	if(head->next->indx < head->indx && head->next->indx < head->prev->indx)
+		return(2);
+	if(head->prev->indx < head->indx && head->prev->indx < head->next->indx)
+		return(3);
+	return(0);
+}
+
+void two_n_b(t_node **b)
+{
+    t_node *last;
+
+    if (!b || !(*b) || !(*b)->next)
+	   	return;
+	last = (*b)->next;
+    *b = last;
 }

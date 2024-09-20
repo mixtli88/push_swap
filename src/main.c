@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/18 10:55:46 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/19 12:18:38 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int	main(int ac, char **av)
 {
 	t_node	*a;
-	// t_node	*b;
+	t_node	*b;
 	
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 	if (ac == 1 || (2 == ac && !av[1][0]))
 		return (1);
 	else if(2 == ac)
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 		else if(ft_listlen(a) == 3)
 			tresnudos(&a);
 		else 
-			push_swap(&a);
+			push_swap(&a, &b);
 			
 	}
 	else
