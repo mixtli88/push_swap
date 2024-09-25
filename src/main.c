@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/20 12:01:52 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/25 08:06:18 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 	}
 	else
 		printf("ya esta ordenadaé\n");
-	print_list(a);
+	// print_list(a);
 	free_list(a);
 	
 	return 0;

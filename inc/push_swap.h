@@ -6,7 +6,7 @@
 /*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/19 11:52:38 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/25 07:37:37 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void 	sa(t_node **head);
 void 	min(t_node **head);
 void 	tresnudos(t_node **head);
 void 	rra(t_node **head);
-void ra(t_node **head);
-bool reppet(t_node *head, long nbr);
-void pb(t_node **head,t_node **b);
-void pa(t_node **head,t_node **b);
-void two_n_b(t_node **b);
-void push_swap(t_node **head, t_node **b);
-int minimoa(t_node *head);
+void 	ra(t_node **head);
+bool 	reppet(t_node *head, long nbr);
+void 	pb(t_node **head,t_node **b);
+void 	pa(t_node **head,t_node **b);
+void 	two_n_b(t_node **b);
+void 	push_swap(t_node **head, t_node **b);
+int 	minimoa(t_node *head, int nn);
 
 
 // if deja trier exit

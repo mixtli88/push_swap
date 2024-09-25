@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/20 12:47:51 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/25 10:13:53 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,24 +214,26 @@ void push_swap(t_node **head, t_node **b)
 {
 	// t_node *current;
 	// int i;
-	// int nn;
+	int nn;
 
 	// i = 0; 
-	// nn = ft_listlen(*head);
+	nn = ft_listlen(*head);
 	while(!check_ord(*head) || *b != NULL)
 	{
 	
 		while(!check_ord(*head))
 		{
-			if(minimoa(*head) == 1)
-				pb(head, b);
-			
-			else if(minimoa(*head) == 2)
-				sa(head);
-			else if(minimoa(*head) == 3)
+			if(minimoa(*head, nn) == 5)
+				ra(head);
+			else if(minimoa(*head, nn) == 3)
 				rra(head);
+			else if(minimoa(*head, nn) == 2 || minimoa(*head, nn) == 4)
+				sa(head);
+			else if(minimoa(*head, nn) == 1)
+				pb(head, b);
 			if(ft_listlen(*head) == 3)
 				tresnudos(head);
+			print_list(*head);
 		}
 		if(*b != NULL)
 			pa(head, b);
@@ -241,19 +243,48 @@ void push_swap(t_node **head, t_node **b)
 		
 
 
-int minimoa(t_node *head)
-{
-	t_node *current;
-	// t_node *comp;
+int minimoa(t_node *head, int nn)
+{	
+	t_node *cola;
+	int pri;
+	int prox;
+	int ult;
+	int penul;
+
+	cola = head->prev;
 	
-	current = head;
-	// comp = head->next;
-	if(current->indx < current->next->indx && current->indx < current->prev->indx)
-		return(1);
-	if(head->next->indx < head->indx && head->next->indx < head->prev->indx)
-		return(2);
-	if(head->prev->indx < head->indx && head->prev->indx < head->next->indx)
+	pri =head->indx;
+	prox =head->next->indx;
+	ult =head->prev->indx;
+	penul = cola->prev->indx;
+	
+	if(penul < (nn / 2) && penul < pri && penul < ult )
 		return(3);
+	if(pri > prox && pri > ult)
+	{
+		if(ult < (nn / 2))
+			return (3);	
+		if(pri > (nn / 2))
+			return(5);
+	}
+	if(pri < prox && pri < ult)
+	{
+		if((pri +1) == ult)
+			return(3);
+		if(prox > ult)
+			if(prox > (nn / 2))
+				return(4);
+		if( ult < prox)
+			return(3);
+		return(1);
+	}
+	if(prox < pri && pri < ult)
+		return(2);
+	if(ult < pri && ult < prox)
+		return(3);
+	// if(head->prev->indx head->indx > head->next->indx && head->next->indx > )
+	// 	return(3);
+		
 	return(0);
 }
 

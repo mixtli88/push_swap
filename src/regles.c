@@ -74,6 +74,15 @@ void pa(t_node **head,t_node **b)
 
 	ft_putstr_fd("pa\n", 1);
 	node = *b;
+	if((*b)->indx == (*b)->next->indx )
+		*b = NULL;
+	else
+	{
+		last = (*b) ->prev;
+		*b = (*b)->next;
+		last->next = *b;
+		(*b)->prev = last;
+	}
 	if(*head == NULL)
 	{
 		*head = node;
@@ -88,15 +97,6 @@ void pa(t_node **head,t_node **b)
 		node->prev = last;
 		(*head)->prev = node;
 		*head =  node;
-	}
-	if((*b)->indx == (*b)->next->indx )
-		*b = NULL;
-	else
-	{
-		last = (*b) ->prev;
-		*b = (*b)->next;
-		last->next = *b;
-		(*b)->prev = last;
 	}
 }
 
