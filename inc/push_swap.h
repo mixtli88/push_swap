@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/25 07:37:37 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/26 12:05:01 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int 	error_syntax(char *str_nb);
 void 	error_free( t_node **head, char **av, bool flag_split);
 bool 	check_ord(t_node *head);
 void 	sa(t_node **head);
-void 	min(t_node **head);
-void 	tresnudos(t_node **head);
+void 	trie_2(t_node **head);
+void 	trie_3(t_node **head);
 void 	rra(t_node **head);
 void 	ra(t_node **head);
 bool 	reppet(t_node *head, long nbr);
@@ -52,8 +52,8 @@ void 	pb(t_node **head,t_node **b);
 void 	pa(t_node **head,t_node **b);
 void 	two_n_b(t_node **b);
 void 	push_swap(t_node **head, t_node **b);
-int 	minimoa(t_node *head, int nn);
-
+void 	minimoa(t_node **head,t_node **b, int nn);
+void 	trie_5(t_node **head, t_node **b, int nn);
 
 // if deja trier exit
 

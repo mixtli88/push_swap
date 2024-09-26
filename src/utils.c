@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/25 10:13:53 by mike             ###   ########.fr       */
+/*   Updated: 2024/09/26 12:38:29 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,38 +212,77 @@ bool check_ord(t_node *head)
 }
 void push_swap(t_node **head, t_node **b)
 {
-	// t_node *current;
-	// int i;
 	int nn;
-
-	// i = 0; 
 	nn = ft_listlen(*head);
 	while(!check_ord(*head) || *b != NULL)
 	{
-	
 		while(!check_ord(*head))
 		{
-			if(minimoa(*head, nn) == 5)
-				ra(head);
-			else if(minimoa(*head, nn) == 3)
-				rra(head);
-			else if(minimoa(*head, nn) == 2 || minimoa(*head, nn) == 4)
-				sa(head);
-			else if(minimoa(*head, nn) == 1)
-				pb(head, b);
-			if(ft_listlen(*head) == 3)
-				tresnudos(head);
-			print_list(*head);
+			if (ft_listlen(*head) == 5 || ft_listlen(*head) == 4)
+				trie_5(head, b, nn);
+			else if
+				(ft_listlen(*head) == 3)
+					trie_3(head);
+			else if
+				(ft_listlen(*head) == 2)
+					trie_2(head);
+			else
+				minimoa(head, b, nn);	
+			// print_list(*head);
 		}
 		if(*b != NULL)
+		{
 			pa(head, b);
+			// print_list(*head);
+		}
 	}
 }
 
 		
 
+void trie_5(t_node **head, t_node **b, int nn)
+{
+	t_node *cola;
+	int pri;
+	int prox;
+	int ult;
+	int penul;
 
-int minimoa(t_node *head, int nn)
+	cola = (*head)->prev;
+	pri = (*head)->indx;
+	prox =(*head)->next->indx;
+	ult = (*head)->prev->indx;
+	penul = cola->prev->indx;
+	
+	if((pri > ult && ult < prox && ult <= (nn / 2) ))
+		rra(head);
+	else if(pri < prox && pri < ult)
+			pb(head, b);
+	else if(pri > prox && pri > ult)
+	{
+		if(ult < (nn / 2))
+			rra(head);	
+		if(pri > (nn / 2))
+			ra(head);
+	}
+	else if(pri < prox && pri < ult)
+	{
+		if((pri +1) == ult)
+			rra(head);
+		else if(prox > ult)
+		{
+			if(prox > (nn / 2))
+				sa(head);
+		else if( ult < prox)
+			rra(head);
+		}
+	}
+	else if(prox < pri && pri < ult)
+		sa(head);
+}
+
+
+void minimoa(t_node **head, t_node **b, int nn)
 {	
 	t_node *cola;
 	int pri;
@@ -251,41 +290,42 @@ int minimoa(t_node *head, int nn)
 	int ult;
 	int penul;
 
-	cola = head->prev;
+	cola = (*head)->prev;
 	
-	pri =head->indx;
-	prox =head->next->indx;
-	ult =head->prev->indx;
+	pri = (*head)->indx;
+	prox =(*head)->next->indx;
+	ult = (*head)->prev->indx;
 	penul = cola->prev->indx;
 	
-	if(penul < (nn / 2) && penul < pri && penul < ult )
-		return(3);
-	if(pri > prox && pri > ult)
+	if(pri > ult && prox > ult && ult <= (nn / 2))
+		rra(head);
+	else if(penul < (nn / 2) && penul < pri && penul < ult )
+		rra(head);
+	else if(pri > prox && pri > ult)
 	{
 		if(ult < (nn / 2))
-			return (3);	
+			rra(head);	
 		if(pri > (nn / 2))
-			return(5);
+			ra(head);
 	}
-	if(pri < prox && pri < ult)
+	else if(pri < prox && pri < ult)
 	{
 		if((pri +1) == ult)
-			return(3);
-		if(prox > ult)
+			rra(head);
+		else if(prox > ult)
+		{
 			if(prox > (nn / 2))
-				return(4);
-		if( ult < prox)
-			return(3);
-		return(1);
+				sa(head);
+		else if( ult < prox)
+			rra(head);
+		else if(pri < prox && pri < ult)
+			pb(head, b);
+		}
+	else if(pri > prox  && prox < ult)
+		sa(head);
+	// if(ult < pri && ult < prox)
+	// 	rra(head);
 	}
-	if(prox < pri && pri < ult)
-		return(2);
-	if(ult < pri && ult < prox)
-		return(3);
-	// if(head->prev->indx head->indx > head->next->indx && head->next->indx > )
-	// 	return(3);
-		
-	return(0);
 }
 
 void two_n_b(t_node **b)
