@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/09/26 12:38:29 by mabril           ###   ########.fr       */
+/*   Updated: 2024/09/27 12:44:41 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,7 @@ void push_swap(t_node **head, t_node **b)
 
 void trie_5(t_node **head, t_node **b, int nn)
 {
+	t_node *tem;
 	t_node *cola;
 	int pri;
 	int prox;
@@ -253,32 +254,37 @@ void trie_5(t_node **head, t_node **b, int nn)
 	prox =(*head)->next->indx;
 	ult = (*head)->prev->indx;
 	penul = cola->prev->indx;
+	tem = (*head)->next;
+	nn = 1;
 	
-	if((pri > ult && ult < prox && ult <= (nn / 2) ))
-		rra(head);
-	else if(pri < prox && pri < ult)
-			pb(head, b);
-	else if(pri > prox && pri > ult)
+	while((*head)->next)
 	{
-		if(ult < (nn / 2))
-			rra(head);	
-		if(pri > (nn / 2))
-			ra(head);
-	}
-	else if(pri < prox && pri < ult)
-	{
-		if((pri +1) == ult)
-			rra(head);
-		else if(prox > ult)
+		if((*head)->indx < tem->indx)
+			tem = tem->next;
+		else
+			break;
+		if(tem == (*head))
 		{
-			if(prox > (nn / 2))
-				sa(head);
-		else if( ult < prox)
-			rra(head);
+			pb(head, b);
+			break;
 		}
 	}
-	else if(prox < pri && pri < ult)
+	if(ult > pri && ult > prox)
+		rra(head);
+	if(prox < pri && prox < ult)
 		sa(head);
+	
+	// else
+	// 	ra(head);
+	// else if(pri > prox && pri > ult)
+	// {
+	// 	if(ult < (nn / 2))
+	// 		rra(head);	
+	// 	if(pri > (nn / 2))
+	// 		ra(head);
+	// }
+	// else 
+	// 	sa(head);
 }
 
 

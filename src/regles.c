@@ -120,7 +120,6 @@ void pb(t_node **head,t_node **b)
 		(*b)->prev = node;
 		*b = node;
 	}
-	// print_list(*head);
 }
 // ra (rotate a): Desplaza totwo los elementos de la pila hacia arriba una posición. El primer elemento se convierte en el último.
 
