@@ -21,12 +21,9 @@ void sa(t_node **head)
 }
 void trie_2(t_node **head)
 {
-    t_node *last;
-
-    if (!head || !(*head) || !(*head)->next)
-	   	return;
-	last = (*head)->next;
-    *head = last;
+	if (!head || !(*head) || !(*head)->next)
+		return;
+	sa(head);
 }
 
 void 	trie_3(t_node **head)
