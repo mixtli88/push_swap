@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/04 09:39:43 by mike             ###   ########.fr       */
+/*   Updated: 2024/10/04 12:04:09 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,9 @@ void trie_5(t_node **head, t_node **b, int nn)
 			}
 			if(tem == (*head))
 			{
-				if(ult - 1 == pri)
+				if(prox == (ult + 1))
+					sa(head);
+				else if(ult - 1 == pri)
 					rra(head);
 				else	
 					pb(head, b);
@@ -274,8 +276,6 @@ void trie_5(t_node **head, t_node **b, int nn)
 			}
 		}
 	}
-	else if(ult < pri && ult < prox)
-		rra(head);
 	else if((prox < pri && prox < ult) || (prox > pri && prox > ult))
 	{
 		if((pri == (ult +1) && prox+1 != ult ) || ((tem->next->indx)+1 == prox && prox < (nn/2)))
@@ -283,6 +283,8 @@ void trie_5(t_node **head, t_node **b, int nn)
 		else
 			sa(	head);
 	}
+	else if(ult < pri && ult < prox)
+		rra(head);
 	else if( (pri > prox && pri > ult) || pri > (prox + 2)|| (pri +1) == prox)
 		ra(head);
 	print_list(*head);
@@ -343,4 +345,30 @@ void two_n_b(t_node **b)
 	   	return;
 	last = (*b)->next;
     *b = last;
+}
+
+void trie_min_a(t_node **head)
+{
+	t_node *tem;
+
+	tem = (*head)->next;
+	while((*head)->next)
+		{
+			if(tem == (*head))
+			{
+				if((*head)->next->indx) == ((*head)->prev->indx + 1)
+					sa(head);
+				else if(ult - 1 == pri)
+					rra(head);
+				else	
+					pb(head, b);
+				break;
+			}
+			else if((*head)->indx > tem->indx)
+			{
+				ra(head);
+				break;
+			}
+			tem = tem->next;
+		}
 }
