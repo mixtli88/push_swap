@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/01 12:04:41 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/04 09:39:43 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,12 +247,12 @@ void trie_5(t_node **head, t_node **b, int nn)
 	int pri;
 	int prox;
 	int ult;
-	
+
 	pri = (*head)->indx;
 	prox =(*head)->next->indx;
 	ult = (*head)->prev->indx;
 	tem = (*head)->next;
-	nn = 1;
+	nn += 1;
 	if(pri < prox && pri < ult)
 	{
 		while((*head)->next)
@@ -277,8 +277,13 @@ void trie_5(t_node **head, t_node **b, int nn)
 	else if(ult < pri && ult < prox)
 		rra(head);
 	else if((prox < pri && prox < ult) || (prox > pri && prox > ult))
-		sa(	head);
-	else if( (pri > prox && pri > ult) || pri > (prox + 2))
+	{
+		if((pri == (ult +1) && prox+1 != ult ) || ((tem->next->indx)+1 == prox && prox < (nn/2)))
+			ra(head);
+		else
+			sa(	head);
+	}
+	else if( (pri > prox && pri > ult) || pri > (prox + 2)|| (pri +1) == prox)
 		ra(head);
 	print_list(*head);
 }
