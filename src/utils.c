@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/04 12:04:09 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/07 18:43:51 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,28 +254,7 @@ void trie_5(t_node **head, t_node **b, int nn)
 	tem = (*head)->next;
 	nn += 1;
 	if(pri < prox && pri < ult)
-	{
-		while((*head)->next)
-		{
-			if((*head)->indx < tem->indx)
-				tem = tem->next;
-			else
-			{
-				ra(head);
-				break;
-			}
-			if(tem == (*head))
-			{
-				if(prox == (ult + 1))
-					sa(head);
-				else if(ult - 1 == pri)
-					rra(head);
-				else	
-					pb(head, b);
-				break;
-			}
-		}
-	}
+		trie_min_a( head, b, nn);
 	else if((prox < pri && prox < ult) || (prox > pri && prox > ult))
 	{
 		if((pri == (ult +1) && prox+1 != ult ) || ((tem->next->indx)+1 == prox && prox < (nn/2)))
@@ -347,7 +326,7 @@ void two_n_b(t_node **b)
     *b = last;
 }
 
-void trie_min_a(t_node **head)
+void trie_min_a(t_node **head, t_node **b, int nn)
 {
 	t_node *tem;
 
@@ -356,9 +335,9 @@ void trie_min_a(t_node **head)
 		{
 			if(tem == (*head))
 			{
-				if((*head)->next->indx) == ((*head)->prev->indx + 1)
+				if((*head)->next->indx == ((*head)->prev->indx + 1) && ((*head)->next->indx > (nn / 2)))
 					sa(head);
-				else if(ult - 1 == pri)
+				else if((*head)->prev->indx - 1 == (*head)->indx)
 					rra(head);
 				else	
 					pb(head, b);
@@ -372,3 +351,26 @@ void trie_min_a(t_node **head)
 			tem = tem->next;
 		}
 }
+
+
+
+// while((*head)->next)
+		// {
+		// 	if((*head)->indx < tem->indx)
+		// 		tem = tem->next;
+		// 	else
+		// 	{
+		// 		ra(head);
+		// 		break;
+		// 	}
+		// 	if(tem == (*head))
+		// 	{
+		// 		if(prox == (ult + 1))
+		// 			sa(head);
+		// 		else if(ult - 1 == pri)
+		// 			rra(head);
+		// 		else	
+		// 			pb(head, b);
+		// 		break;
+		// 	}
+		// }
