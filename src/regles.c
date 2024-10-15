@@ -6,7 +6,8 @@ void sa(t_node **head)
     t_node *current;
     t_node *last;
 
-	printf("sa\n");
+	// printf("sa\n");
+	ft_putstr_fd("sa\n", 1);
     current = (*head)->next;
     last = (*head)->prev;
     last->next = current;

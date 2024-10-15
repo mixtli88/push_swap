@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/07 18:43:51 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/15 18:52:45 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,21 +252,32 @@ void trie_5(t_node **head, t_node **b, int nn)
 	prox =(*head)->next->indx;
 	ult = (*head)->prev->indx;
 	tem = (*head)->next;
-	nn += 1;
+
 	if(pri < prox && pri < ult)
 		trie_min_a( head, b, nn);
-	else if((prox < pri && prox < ult) || (prox > pri && prox > ult))
+	else if(ult < pri && ult < prox)
+	{
+		if(ult + 1  == pri && ult < (nn/2))
+			rra(head);
+		else if(prox - 1 == ult)
+			sa(head);
+		else if (pri - 1 == ult && pri > (nn/2))
+			ra(head);
+		// else if(pri < prox)
+		// 	sa(head);
+		else 
+			rra(head);
+	}
+	else if (pri > prox && pri > ult)
+		ra(head);
+	else if((prox < pri && prox < ult) )
 	{
 		if((pri == (ult +1) && prox+1 != ult ) || ((tem->next->indx)+1 == prox && prox < (nn/2)))
 			ra(head);
 		else
 			sa(	head);
 	}
-	else if(ult < pri && ult < prox)
-		rra(head);
-	else if( (pri > prox && pri > ult) || pri > (prox + 2)|| (pri +1) == prox)
-		ra(head);
-	print_list(*head);
+	// print_list(*head);
 }
 
 
@@ -335,9 +346,9 @@ void trie_min_a(t_node **head, t_node **b, int nn)
 		{
 			if(tem == (*head))
 			{
-				if((*head)->next->indx == ((*head)->prev->indx + 1) && ((*head)->next->indx > (nn / 2)))
+				if((*head)->next->indx > (*head)->prev->indx && ((*head)->next->indx > (nn / 2)) && (*head)->indx >(nn / 2))
 					sa(head);
-				else if((*head)->prev->indx - 1 == (*head)->indx)
+				else if((*head)->prev->indx - 1 == (*head)->indx && (*head)->next->indx - 1 == (*head)->prev->indx)
 					rra(head);
 				else	
 					pb(head, b);
@@ -345,7 +356,10 @@ void trie_min_a(t_node **head, t_node **b, int nn)
 			}
 			else if((*head)->indx > tem->indx)
 			{
-				ra(head);
+				if((*head)->prev->indx - 1 == (*head)->indx)
+					rra(head);
+				else
+					ra(head);
 				break;
 			}
 			tem = tem->next;
