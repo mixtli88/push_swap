@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:39:11 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/17 20:30:03 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/18 18:51:18 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,7 @@ static int	ft_count_words(const char *str, char c)
 		if (ptr_str[i])
 			count++;
 		while (ptr_str[i] != c && ptr_str[i])
-		{
-			if(ptr_str[i] == 34)
-			{
-				write(2, "Error de syntax perrott\n", 23);
-				exit(1);
-			}
 			i++;
-		}
 	}
 	return (count);
 }

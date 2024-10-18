@@ -7,10 +7,8 @@ int error_syntax(char *str_nb)
 	if((*str_nb == '+' || *str_nb == '-' || (*str_nb >= '0' && *str_nb <= '9')))
 	{
 		while(*++str_nb)
-		{
 			if(!(*str_nb >= '0' && *str_nb <= '9'))
 				return(1);		
-		}
 	}
 	return (0);
 }
@@ -31,4 +29,13 @@ int error_reppet(t_node **head , char **av, bool flag_split)
 		free_av(av);
 	write(2, "Error number repet\n", 18);
 	exit(1);
+}
+void free_av(char **av)
+{
+	int i;
+	
+	i=0;
+	while(av[i])
+		free(av[i++]);
+	free(av);
 }

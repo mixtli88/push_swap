@@ -6,17 +6,11 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/17 18:59:48 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/18 19:35:55 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void	msg_error(void)
-{
-	ft_putstr_fd("Error: Invalid arguments\n", 2);
-	exit(EXIT_FAILURE);
-}
 
 long	ft_atolong(char *str)
 {
@@ -109,29 +103,6 @@ void	new_node(t_node **head, int num)
 		(*head)->prev = node;
 	}
 }
-void print_list(t_node *head)
-{
-	t_node *current;
-
-	current = head;
-	while (head)
-	{		
-		printf("   |  %d   |   ", current->num);
-		current = current->next;
-		if (current == head)
-			break;
-	}
-	current = head;
-		printf("\n");
-	while (head)
-	{		
-		printf("      %d       ",current->indx) ;
-		current = current->next;
-		if (current == head)
-			break;
-	}
-	printf("\n");
-}
 
 void free_list(t_node *head)
 {
@@ -186,15 +157,6 @@ int ft_listlen(t_node *head)
 	return (lst_len);
 }
 
-void free_av(char **av)
-{
-	int i;
-	
-	i=0;
-	while(av[i])
-		free(av[i++]);
-	free(av);
-}
 bool check_ord(t_node *head)
 {
 	t_node *current;
@@ -226,19 +188,11 @@ void push_swap(t_node **head, t_node **b)
 			else if
 				(ft_listlen(*head) == 2)
 					trie_2(head);
-			else
-				minimoa(head, b, nn);	
-			// print_list(*head);
 		}
 		if(*b != NULL)
-		{
 			pa(head, b);
-			// print_list(*head);
-		}
 	}
 }
-
-		
 
 void trie_5(t_node **head, t_node **b, int nn)
 {
@@ -254,7 +208,7 @@ void trie_5(t_node **head, t_node **b, int nn)
 	tem = (*head)->next;
 
 	if(pri < prox && pri < ult)
-		trie_min_a( head, b, nn);
+		is_min_a( head, b, nn);
 	else if(ult < pri && ult < prox)
 	{
 		if(ult + 1  == pri && ult < (nn/2))
@@ -279,7 +233,6 @@ void trie_5(t_node **head, t_node **b, int nn)
 	}
 	// print_list(*head);
 }
-
 
 void minimoa(t_node **head, t_node **b, int nn)
 {	
@@ -327,17 +280,7 @@ void minimoa(t_node **head, t_node **b, int nn)
 	}
 }
 
-void two_n_b(t_node **b)
-{
-    t_node *last;
-
-    if (!b || !(*b) || !(*b)->next)
-	   	return;
-	last = (*b)->next;
-    *b = last;
-}
-
-void trie_min_a(t_node **head, t_node **b, int nn)
+void is_min_a(t_node **head, t_node **b, int nn)
 {
 	t_node *tem;
 
@@ -366,7 +309,39 @@ void trie_min_a(t_node **head, t_node **b, int nn)
 		}
 }
 
+// void print_list(t_node *head)
+// {
+// 	t_node *current;
 
+// 	current = head;
+// 	while (head)
+// 	{		
+// 		printf("   |  %d   |   ", current->num);
+// 		current = current->next;
+// 		if (current == head)
+// 			break;
+// 	}
+// 	current = head;
+// 		printf("\n");
+// 	while (head)
+// 	{		
+// 		printf("      %d       ",current->indx) ;
+// 		current = current->next;
+// 		if (current == head)
+// 			break;
+// 	}
+// 	printf("\n");
+// }
+
+// void two_n_b(t_node **b)
+// {
+//     t_node *last;
+
+//     if (!b || !(*b) || !(*b)->next)
+// 	   	return;
+// 	last = (*b)->next;
+//     *b = last;
+// }
 
 // while((*head)->next)
 		// {
