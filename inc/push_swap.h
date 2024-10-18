@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/07 18:43:30 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/17 18:58:15 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void 	push_swap(t_node **head, t_node **b);
 void 	minimoa(t_node **head,t_node **b, int nn);
 void 	trie_5(t_node **head, t_node **b, int nn);
 void trie_min_a(t_node **head, t_node **b, int nn);
+int error_reppet(t_node **head , char **av, bool flag_split);
+
 
 // if deja trier exit
 
