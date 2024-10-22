@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:54:21 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 21:14:10 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:26:00 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,19 @@ void	trie_5(t_node **head, t_node **b, int nn)
 	tem = (*head)->next;
 	if ((*head)->indx < (*head)->next->indx
 		&& (*head)->indx < (*head)->prev->indx)
-		head_is_min_a(head, b, nn);
+	{
+		if (top_is_min_a(*head) == 1)
+			head_is_min_a(head, b, nn);
+		else
+			head_not_min_a(head);
+	}
 	else if ((*head)->prev->indx < (*head)->indx
 		&& (*head)->prev->indx < (*head)->next->indx)
-		last_node_is_min_a(head, b, nn);
+		last_node_is_min_a(head, nn);
 	else if ((*head)->indx > (*head)->next->indx
 		&& (*head)->indx > (*head)->prev->indx)
 		ra(head);
 	else if (((*head)->next->indx < (*head)->indx
 			&& (*head)->next->indx < (*head)->prev->indx))
-		next_node_is_min_a(head, b, nn);
+		next_node_is_min_a(head, nn);
 }

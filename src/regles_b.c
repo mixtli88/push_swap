@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:42:27 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 20:53:34 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:18:27 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,18 @@ void	pb(t_node **head, t_node **b)
 
 void	rb(t_node **b)
 {
-	write(1, "rb\n", 3);
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	*b = (*b)->next;
+	write(1, "rb\n", 3);
 }
 // rrb(rotación inversa b): desplaza los elementos de la pila b una posición 
 // hacia abajo. la pila b. El último elemento se convierte en el primero.
 
 void	rrb(t_node **b)
 {
-	t_node	*last;
-
-	write(1, "rra\n", 4);
 	if (!b || !(*b) || !(*b)->next)
 		return ;
-	last = (*b)->prev;
-	*b = last;
+	*b = (*b)->prev;
+	write(1, "rra\n", 4);
 }

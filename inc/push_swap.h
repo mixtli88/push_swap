@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 21:11:59 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:25:35 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	new_node(t_node **head, int num);
 int		ft_listlen(t_node *head);
 bool	check_ord(t_node *head);
 bool	reppet(t_node *head, long nbr);
+int		top_is_min_a(t_node *head);
 // error.c
 void	free_list(t_node *head);
 void	free_av(char **av);
@@ -48,13 +49,18 @@ void	trie_3(t_node **head);
 void	trie_5(t_node **head, t_node **b, int nn);
 // regles.c
 void	sa(t_node **head);
-void	rra(t_node **head);
 void	ra(t_node **head);
-void	pb(t_node **head, t_node **b);
+void	rra(t_node **head);
 void	pa(t_node **head, t_node **b);
+void	sb(t_node **b);
+void	rb(t_node **b);
+void	rrb(t_node **b);
+void	pb(t_node **head, t_node **b);
+
 // conditions.c
 void	head_is_min_a(t_node **head, t_node **b, int nn);
-void	last_node_is_min_a(t_node **head, t_node **b, int nn);
-void	next_node_is_min_a(t_node **head, t_node **b, int nn);
+void	head_not_min_a(t_node **head);
+void	last_node_is_min_a(t_node **head, int nn);
+void	next_node_is_min_a(t_node **head, int nn);
 
 #endif

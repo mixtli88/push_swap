@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 21:05:28 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:14:06 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,19 @@ bool	check_ord(t_node *head)
 	return (true);
 }
 
+int	top_is_min_a(t_node *head)
+{
+	t_node	*tem;
+
+	tem = head->next;
+	while (tem != head)
+	{
+		if (head->indx > tem->indx)
+			return (0);
+		tem = tem->next;
+	}
+	return (1);
+}
 // void print_list(t_node *head)
 // {
 // 	t_node *current;

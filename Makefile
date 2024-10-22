@@ -6,7 +6,7 @@
 #    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/27 12:37:13 by mabril            #+#    #+#              #
-#    Updated: 2024/10/21 19:41:44 by mabril           ###   ########.fr        #
+#    Updated: 2024/10/22 13:13:20 by mabril           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ BINDIR	=	bin
 
 #--- SOURCES ---#
 
-SRCS	=	main.c utils.c error.c regles.c trie.c init.c
+SRCS	=	main.c utils.c error.c regles.c trie.c init.c regles_a.c regles_b.c conditions.c
 SRC		=	$(addprefix $(SRCDIR)/, $(SRCS))
 BIN     =	$(patsubst $(SRCDIR)/%.c,$(BINDIR)/%.o,$(SRC))
 

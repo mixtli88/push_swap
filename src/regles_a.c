@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:39:32 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 20:59:25 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:18:09 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@
 void	sa(t_node **head)
 {
 	t_node	*current;
-	t_node	*last;
 
 	write(1, "sa\n", 3);
 	current = (*head)->next;
-	last = (*head)->prev;
-	last->next = current;
-	current->prev = last;
-	last = current->next;
+	(*head)->prev->next = current;
+	current->prev = (*head)->prev;
+	(*head)->next = current->next;
+	current->next->prev = (*head);
 	current->next = *head;
-	(*head)->next = last;
 	(*head)->prev = current;
-	last->prev = *head;
 	*head = current;
 }
 
@@ -38,23 +35,30 @@ void	sa(t_node **head)
 void	pa(t_node **head, t_node **b)
 {
 	t_node	*node;
-	t_node	*last;
 
-	write(1, "pa\n", 3);
 	node = *b;
-	if ((*b)->indx == (*b)->next->indx)
+	if ((*b)->next->indx == (*b)->indx)
 		*b = NULL;
-	return ;
-	last = (*b)->prev;
-	*b = (*b)->next;
-	last->next = *b;
-	(*b)->prev = last;
-	last = (*head)->prev;
-	last->next = node;
-	node->next = *head;
-	node->prev = last;
-	(*head)->prev = node;
+	else
+	{
+		(*b)->prev->next = (*b)->next;
+		(*b)->next->prev = (*b)->prev;
+		(*b) = (*b)->next;
+	}
+	if (*head == NULL)
+	{
+		node->next = *head;
+		node->prev = *head;
+	}
+	else
+	{
+		node->next = *head;
+		node->prev = (*head)->prev;
+		(*head)->prev->next = node;
+		(*head)->prev = node;
+	}
 	*head = node;
+	write(1, "pa\n", 3);
 }
 
 // ra (rotate a): Desplaza los elementos de la pila hacia arriba una posición. 
@@ -62,10 +66,10 @@ void	pa(t_node **head, t_node **b)
 
 void	ra(t_node **head)
 {
-	write(1, "ra\n", 3);
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	*head = (*head)->next;
+	write(1, "ra\n", 3);
 }
 
 // rra(giro inverso a): desplaza los elementos de la pila hacia abajo una 
@@ -73,11 +77,8 @@ void	ra(t_node **head)
 
 void	rra(t_node **head)
 {
-	t_node	*last;
-
-	write(1, "rra\n", 4);
 	if (!head || !(*head) || !(*head)->next)
 		return ;
-	last = (*head)->prev;
-	*head = last;
+	*head = (*head)->prev;
+	write(1, "rra\n", 4);
 }
