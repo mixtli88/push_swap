@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/22 18:25:35 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:04:50 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ void	pb(t_node **head, t_node **b);
 
 // conditions.c
 void	head_is_min_a(t_node **head, t_node **b, int nn);
-void	head_not_min_a(t_node **head);
+void	head_not_min_a(t_node **head, int nn);
 void	last_node_is_min_a(t_node **head, int nn);
 void	next_node_is_min_a(t_node **head, int nn);
+void	last_node_is_max_a(t_node **head, int nn);
 
 #endif
