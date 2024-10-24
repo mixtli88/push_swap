@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:42:07 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 14:41:30 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/23 20:08:05 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,27 +88,22 @@ void	init(t_node **head, char **av, bool flag_split)
 void	push_swap(t_node **head, t_node **b)
 {
 	float	nn;
-	int time;
 
-	time = 0;
 	nn = ft_listlen(*head);
 	while (!check_ord(*head) || *b != NULL)
 	{
 		while (!check_ord(*head))
 		{
-			if (ft_listlen(*head) == 5 || ft_listlen(*head) == 4)
-				trie_5(head, b, nn);
+			if (ft_listlen(*head) == 2)
+				sa(head);
 			else if (ft_listlen(*head) == 3)
 				trie_3(head);
-			else if (ft_listlen(*head) == 2)
-				sa(head);
-			time++;
+			else if (ft_listlen(*head) <= 5)
+				trie_5(head, b, nn);
+			else
+				trie_radix(head, b, nn);
 		}
 		if (*b != NULL)
-		{
 			pa(head, b);
-			time++;
-		}
 	}
-	printf("%d", time);
 }

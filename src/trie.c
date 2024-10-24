@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:54:21 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 13:05:15 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/23 22:18:59 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,31 @@ void	trie_5(t_node **head, t_node **b, int nn)
 	else if ((*head)->indx > (*head)->next->indx
 		&& (*head)->indx > (*head)->prev->indx)
 		ra(head);
+}
+
+void	trie_radix(t_node **head, t_node **b, int nn)
+{
+	int	i;
+	int	j;
+	int	max_bits;
+
+	max_bits = 0;
+	while ((nn >> max_bits) != 0)
+		max_bits++;
+	i = 0;
+	while (i < max_bits && !check_ord(*head))
+	{
+		j = 0;
+		while (j < nn)
+		{
+			if (((*head)->indx >> i) & 1)
+				ra(head);
+			else
+				pb(head, b);
+			j++;
+		}
+		while (*b)
+			pa(head, b);
+		i++;
+	}
 }

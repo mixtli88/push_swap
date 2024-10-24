@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 21:04:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 14:34:13 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/23 22:19:18 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ void	head_not_min_a(t_node **head, int nn)
 
 	med = (float)nn / 2;
 	tem = (*head)->next;
-	if (((*head)->prev->indx - 1 == (*head)->indx && (*head)->prev->indx < med)
-		|| ((*head)->prev->indx - 1 == (*head)->next->indx) || ((*head)->prev->indx + 1 == (*head)->next->indx))
+	if ((*head)->indx > med)
+		ra(head);
+	else if (((*head)->prev->indx - 1 == (*head)->indx
+			&& (*head)->prev->indx < med) || ((*head)->prev->indx
+			- 1 == (*head)->next->indx) || ((*head)->prev->indx
+			+ 1 == (*head)->next->indx))
 		rra(head);
 	else if ((*head)->indx + 1 == (*head)->next->indx && (*head)->next->indx
 		+ 1 == tem->next->indx)
@@ -50,11 +54,12 @@ void	last_node_is_min_a(t_node **head, int nn)
 
 	med = (float)nn / 2;
 	tem = (*head)->next;
-	if (((*head)->next->indx - 1 == (*head)->prev->indx) && (*head)->next->indx + 1 != tem->next->indx)
+	if (((*head)->next->indx - 1 == (*head)->prev->indx) && (*head)->next->indx
+		+ 1 != tem->next->indx)
 		sa(head);
-	else if (((*head)->prev->indx + 1 == (*head)->indx && (*head)->prev->indx < med)
-		|| ((*head)->prev->indx + 1 == (*head)->next->indx
-			&& (*head)->prev->indx < med))
+	else if (((*head)->prev->indx + 1 == (*head)->indx
+			&& (*head)->prev->indx < med) || ((*head)->prev->indx
+			+ 1 == (*head)->next->indx && (*head)->prev->indx < med))
 		rra(head);
 	else if ((*head)->indx - 1 == (*head)->prev->indx && (*head)->indx > med)
 		ra(head);

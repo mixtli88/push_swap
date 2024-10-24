@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 13:04:50 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:38:15 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		error_reppet(t_node **head, char **av, bool flag_split);
 // trie.c
 void	trie_3(t_node **head);
 void	trie_5(t_node **head, t_node **b, int nn);
+void	trie_radix(t_node **head, t_node **b, int nn);
+
 // regles.c
 void	sa(t_node **head);
 void	ra(t_node **head);
