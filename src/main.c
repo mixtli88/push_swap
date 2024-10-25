@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/21 20:33:37 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/24 21:23:14 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	main(int ac, char **av)
 	if (ac == 1 || (2 == ac && !av[1][0]))
 		return (1);
 	else if (2 == ac)
-	{
 		init(&a, av = ft_split(av[1], ' '), ac == 2);
-	}
 	else
 		init(&a, av + 1, ac == 2);
 	n_idex(&a, ft_listlen(a));

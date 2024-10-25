@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:42:07 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 20:08:05 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/24 21:36:40 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,8 @@ void	init(t_node **head, char **av, bool flag_split)
 		if (error_syntax(av[i]) == 1)
 			error_free(head, av, flag_split);
 		nbr = ft_atolong(av[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
+		if (nbr > INT_MAX || nbr < INT_MIN || reppet(*head, nbr))
 			error_free(head, av, flag_split);
-		if (reppet(*head, nbr))
-			error_reppet(head, av, flag_split);
 		new_node(head, nbr);
 		i++;
 	}

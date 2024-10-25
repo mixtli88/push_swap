@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 19:38:15 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/24 21:32:40 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	free_list(t_node *head);
 void	free_av(char **av);
 int		error_syntax(char *str_nb);
 void	error_free(t_node **head, char **av, bool flag_split);
-int		error_reppet(t_node **head, char **av, bool flag_split);
 // trie.c
 void	trie_3(t_node **head);
 void	trie_5(t_node **head, t_node **b, int nn);
