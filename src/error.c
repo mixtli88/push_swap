@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:56:36 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/24 21:34:39 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 02:27:34 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	error_free(t_node **head, char **av, bool flag_split)
 		free_list(*head);
 	if (flag_split)
 		free_av(av);
-	write(2, "Error\n", 6);
+	// write(2, "Error\n", 6);
 	exit(1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:42:07 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/24 21:36:40 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 04:02:24 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	push_swap(t_node **head, t_node **b)
 			else if (ft_listlen(*head) <= 5)
 				trie_5(head, b, nn);
 			else
-				trie_radix(head, b, nn);
+				trie_bloque(head, b, nn);
+				// trie_radix(head, b, nn);
 		}
 		if (*b != NULL)
 			pa(head, b);

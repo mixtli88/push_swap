@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:01:45 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/22 18:14:06 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 03:36:41 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,18 @@ bool	reppet(t_node *head, long nbr)
 	return (false);
 }
 
-int	ft_listlen(t_node *head)
+int	ft_listlen(t_node *stac)
 {
 	int		lst_len;
 	t_node	*current;
 
 	lst_len = 0;
-	current = head;
+	current = stac;
 	while (current)
 	{
 		current = current->next;
 		lst_len++;
-		if (current == head)
+		if (current == stac)
 			break ;
 	}
 	return (lst_len);
@@ -103,23 +103,13 @@ int	top_is_min_a(t_node *head)
 // void print_list(t_node *head)
 // {
 // 	t_node *current;
-
 // 	current = head;
 // 	while (head)
 // 	{
-// 		printf("   |  %d   |   ", current->num);
+// 		printf("%d\n",current->indx) ;
 // 		current = current->next;
 // 		if (current == head)
 // 			break ;
 // 	}
-// 	current = head;
-// 		printf("\n");
-// 	while (head)
-// 	{
-// 		printf("      %d       ",current->indx) ;
-// 		current = current->next;
-// 		if (current == head)
-// 			break ;
-// 	}
-// 	printf("\n");
+// 	printf("\n*****");
 // }

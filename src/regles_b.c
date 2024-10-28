@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   regles_b.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:42:27 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/22 18:18:27 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 02:30:24 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	sb(t_node **b)
 {
 	t_node	*current;
 	t_node	*last;
-
-	write(1, "sa\n", 3);
+	printf("sb\n");
+	// write(1, "sa\n", 3);
 	current = (*b)->next;
 	last = (*b)->prev;
 	last->next = current;
@@ -40,12 +40,21 @@ void	pb(t_node **head, t_node **b)
 	t_node	*node;
 	t_node	*last;
 
-	write(1, "pb\n", 3);
+	printf("pb\n");
+	// write(1, "pb\n", 3);
 	node = *head;
-	last = (*head)->prev;
-	*head = (*head)->next;
-	last->next = *head;
-	(*head)->prev = last;
+	if ((*head)->next->indx == (*head)->indx)
+		*head = NULL;
+	else
+	{
+		
+		last = (*head)->prev;
+		*head = (*head)->next;
+		last->next = *head;
+		(*head)->prev = last;
+		
+	}
+	
 	if (*b == NULL)
 	{
 		*b = node;
@@ -70,7 +79,8 @@ void	rb(t_node **b)
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	*b = (*b)->next;
-	write(1, "rb\n", 3);
+	printf("rb\n");
+	// write(1, "rb\n", 3);
 }
 // rrb(rotación inversa b): desplaza los elementos de la pila b una posición 
 // hacia abajo. la pila b. El último elemento se convierte en el primero.
@@ -80,5 +90,6 @@ void	rrb(t_node **b)
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	*b = (*b)->prev;
-	write(1, "rra\n", 4);
+	printf("rrb\n");
+	// write(1, "rra\n", 4);
 }

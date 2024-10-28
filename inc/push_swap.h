@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:28:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/24 21:32:40 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 04:00:27 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init(t_node **head, char **av, bool flag_split);
 void	push_swap(t_node **head, t_node **b);
 // utils.c
 void	new_node(t_node **head, int num);
-int		ft_listlen(t_node *head);
+int		ft_listlen(t_node *stack);
 bool	check_ord(t_node *head);
 bool	reppet(t_node *head, long nbr);
 int		top_is_min_a(t_node *head);
@@ -64,5 +64,7 @@ void	head_not_min_a(t_node **head, int nn);
 void	last_node_is_min_a(t_node **head, int nn);
 void	next_node_is_min_a(t_node **head, int nn);
 void	last_node_is_max_a(t_node **head, int nn);
+// void print_list(t_node *head);
+void	trie_bloque(t_node **head, t_node **b, int nn);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   regles_a.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:39:32 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/22 18:18:09 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/28 02:25:42 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 void	sa(t_node **head)
 {
 	t_node	*current;
-
-	write(1, "sa\n", 3);
+	printf("sa\n");
+	// write(1, "sa\n", 3);
 	current = (*head)->next;
 	(*head)->prev->next = current;
 	current->prev = (*head)->prev;
@@ -47,8 +47,8 @@ void	pa(t_node **head, t_node **b)
 	}
 	if (*head == NULL)
 	{
-		node->next = *head;
-		node->prev = *head;
+		node->next = node;
+		node->prev = node;
 	}
 	else
 	{
@@ -58,7 +58,8 @@ void	pa(t_node **head, t_node **b)
 		(*head)->prev = node;
 	}
 	*head = node;
-	write(1, "pa\n", 3);
+	printf("pa\n");
+	// write(1, "pa\n", 3);
 }
 
 // ra (rotate a): Desplaza los elementos de la pila hacia arriba una posición. 
@@ -69,7 +70,8 @@ void	ra(t_node **head)
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	*head = (*head)->next;
-	write(1, "ra\n", 3);
+	printf("ra\n");
+	// write(1, "ra\n", 3);
 }
 
 // rra(giro inverso a): desplaza los elementos de la pila hacia abajo una 
@@ -80,5 +82,6 @@ void	rra(t_node **head)
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	*head = (*head)->prev;
-	write(1, "rra\n", 4);
+	printf("rra\n");
+	// write(1, "rra\n", 4);
 }

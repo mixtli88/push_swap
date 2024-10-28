@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conditions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 21:04:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/23 22:19:18 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/26 00:06:35 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void	next_node_is_min_a(t_node **head, int nn)
 
 void	last_node_is_max_a(t_node **head, int nn)
 {
-	t_node	*tem;
+	// t_node	*tem;
 	float	med;
 
 	med = (float)nn / 2;
-	tem = (*head)->next;
+	// tem = (*head)->next;
 	if ((*head)->indx + 1 == ((*head)->prev->indx) && (*head)->next->indx
 		+ 1 == (*head)->indx && (*head)->next->indx > med)
 		sa(head);
