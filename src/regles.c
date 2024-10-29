@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   regles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:34:06 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/28 02:30:51 by mike             ###   ########.fr       */
+/*   Updated: 2024/10/28 19:43:57 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 
 void	ss(t_node **head, t_node **b)
 {
-	printf("ss\n");
-	// write(1, "rr\n", 3);
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	sa(head);
 	sb(b);
+	write(1, "rr\n", 3);
 }
 // rr : ra y rb al mismo tiempo.
 
@@ -35,8 +34,7 @@ void	rr(t_node **head, t_node **b)
 		return ;
 	ra(head);
 	rb(b);
-	printf("rr\n");
-	// write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
 
 // rrr: rra y rrb al mismo tiempo.
@@ -49,6 +47,5 @@ void	rrr(t_node **head, t_node **b)
 		return ;
 	rra(head);
 	rrb(b);
-	printf("rrr\n");
-	// write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }

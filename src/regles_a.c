@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   regles_a.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:39:32 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/28 02:25:42 by mike             ###   ########.fr       */
+/*   Updated: 2024/10/28 19:46:12 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 void	sa(t_node **head)
 {
 	t_node	*current;
-	printf("sa\n");
-	// write(1, "sa\n", 3);
+
 	current = (*head)->next;
 	(*head)->prev->next = current;
 	current->prev = (*head)->prev;
@@ -27,6 +26,7 @@ void	sa(t_node **head)
 	current->next = *head;
 	(*head)->prev = current;
 	*head = current;
+	write(1, "sa\n", 3);
 }
 
 // pa (push a): Tome el primer elemento encima de b y colóquelo en a. No hace
@@ -58,8 +58,7 @@ void	pa(t_node **head, t_node **b)
 		(*head)->prev = node;
 	}
 	*head = node;
-	printf("pa\n");
-	// write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 // ra (rotate a): Desplaza los elementos de la pila hacia arriba una posición. 
@@ -70,8 +69,7 @@ void	ra(t_node **head)
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	*head = (*head)->next;
-	printf("ra\n");
-	// write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 // rra(giro inverso a): desplaza los elementos de la pila hacia abajo una 
@@ -82,6 +80,5 @@ void	rra(t_node **head)
 	if (!head || !(*head) || !(*head)->next)
 		return ;
 	*head = (*head)->prev;
-	printf("rra\n");
-	// write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
