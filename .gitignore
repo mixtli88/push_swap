@@ -1,3 +1,4 @@
 # ignore ALL files in ANY directory named temp
 push_swap_visualizer/
 visualizer-push-swap/
+Push-Swap-Tester/

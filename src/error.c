@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:56:36 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/28 02:27:34 by mike             ###   ########.fr       */
+/*   Updated: 2024/10/29 19:30:08 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	error_syntax(char *str_nb)
 {
+	if ((*str_nb == '+' || *str_nb == '-') && ft_strlen(str_nb))
+		return (1);
 	if (!(*str_nb == '+' || *str_nb == '-' || (*str_nb >= '0'
 				&& *str_nb <= '9')) || !*str_nb)
 		return (1);
@@ -33,7 +35,7 @@ void	error_free(t_node **head, char **av, bool flag_split)
 		free_list(*head);
 	if (flag_split)
 		free_av(av);
-	// write(2, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

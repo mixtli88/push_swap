@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:24:03 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/24 21:23:14 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/29 19:23:11 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac == 1 || (2 == ac && !av[1][0]))
-		return (1);
+	{
+		write(2, "Error\n", 6);
+		return (2);
+	}
 	else if (2 == ac)
 		init(&a, av = ft_split(av[1], ' '), ac == 2);
 	else
