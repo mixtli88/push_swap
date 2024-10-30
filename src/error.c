@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:56:36 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/29 19:30:08 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/30 13:33:10 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	error_syntax(char *str_nb)
 {
-	if ((*str_nb == '+' || *str_nb == '-') && ft_strlen(str_nb))
+	if ((*str_nb == '+' || *str_nb == '-') && ft_strlen(str_nb) == 1)
 		return (1);
 	if (!(*str_nb == '+' || *str_nb == '-' || (*str_nb >= '0'
 				&& *str_nb <= '9')) || !*str_nb)
@@ -36,7 +36,7 @@ void	error_free(t_node **head, char **av, bool flag_split)
 	if (flag_split)
 		free_av(av);
 	write(2, "Error\n", 6);
-	exit(1);
+	exit(2);
 }
 
 void	free_av(char **av)

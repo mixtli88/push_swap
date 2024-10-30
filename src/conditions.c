@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conditions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 21:04:30 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/26 00:06:35 by mike             ###   ########.fr       */
+/*   Updated: 2024/10/30 12:30:25 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	head_not_min_a(t_node **head, int nn)
 	tem = (*head)->next;
 	if ((*head)->indx > med)
 		ra(head);
-	else if (((*head)->prev->indx - 1 == (*head)->indx
-			&& (*head)->prev->indx < med) || ((*head)->prev->indx
+	if (tem->next->indx < med)
+		sa(head);
+	else if (((*head)->prev->indx - 1 == (*head)->indx) || ((*head)->prev->indx
 			- 1 == (*head)->next->indx) || ((*head)->prev->indx
 			+ 1 == (*head)->next->indx))
 		rra(head);
@@ -87,11 +88,9 @@ void	next_node_is_min_a(t_node **head, int nn)
 
 void	last_node_is_max_a(t_node **head, int nn)
 {
-	// t_node	*tem;
 	float	med;
 
 	med = (float)nn / 2;
-	// tem = (*head)->next;
 	if ((*head)->indx + 1 == ((*head)->prev->indx) && (*head)->next->indx
 		+ 1 == (*head)->indx && (*head)->next->indx > med)
 		sa(head);

@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:42:07 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/29 19:28:01 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/30 14:05:53 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	push_swap(t_node **head, t_node **b)
 				trie_5(head, b, nn);
 			else
 			{
-				if (nn > 200)
+				if (nn > 100)
 					trie_radix(head, b, nn);
 				else
 					trie_bloque(head, b, nn);

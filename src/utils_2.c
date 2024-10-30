@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:05:26 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/29 15:10:13 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/30 14:03:52 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	push_block_to_b(t_node **head, t_node **b, int nn)
 	int	min;
 	int	max;
 
-	block_size = nn / 5;
+	block_size = nn / 6;
 	min = 0;
 	max = block_size;
 	if (*head == NULL)
