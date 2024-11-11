@@ -6,13 +6,21 @@
 #    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/27 12:37:13 by mabril            #+#    #+#              #
-#    Updated: 2024/10/28 19:50:52 by mabril           ###   ########.fr        #
+#    Updated: 2024/11/11 13:03:41 by mabril           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 #--- LIBRARIES AND HEADERS ---#
+GREEN = \033[32m
+RED = \033[31m
+YELLOW = \033[33m
+BLUE = \033[34m
+MAGENTA = \033[35m
+CYAN = \033[36m
+WHITE = \033[37m
+RESET = \033[0m
 
 HEADER_FILES	=	push_swap.h
 HEADERS			=	$(addprefix $(INCDIR)/, $(HEADER_FILES))
@@ -70,3 +78,13 @@ re	 		: fclean all
 #--- PHONY ---#
 
 .PHONY	 	: all clean fclean re
+
+# ************test visualizer**********
+
+# git clone https://github.com/o-reo/push_swap_visualizer.git
+# cd push_swap_visualizer
+# mkdir build
+# cd build
+# cmake ..
+# make
+# ./bin/visualizer

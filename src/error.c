@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:56:36 by mabril            #+#    #+#             */
-/*   Updated: 2024/10/30 13:33:10 by mabril           ###   ########.fr       */
+/*   Updated: 2024/10/30 21:05:45 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	error_syntax(char *str_nb)
 				&& *str_nb <= '9')))
 	{
 		while (*++str_nb)
-			if (!(*str_nb >= '0' && *str_nb <= '9'))
+			if (!(*str_nb >= '0' && *str_nb <= '9') || *str_nb == '#')
 				return (1);
 	}
 	return (0);
@@ -36,7 +36,7 @@ void	error_free(t_node **head, char **av, bool flag_split)
 	if (flag_split)
 		free_av(av);
 	write(2, "Error\n", 6);
-	exit(2);
+	exit(1);
 }
 
 void	free_av(char **av)
